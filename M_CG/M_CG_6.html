@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIDO-COMMANDER GRADIENT-6</title>
+    <link rel="stylesheet" href="../_css/bootstrap.css">
+    <script src="../_js/bootstrap.bundle.js"></script>
+    <style>
+        /* 手錶價格及購物車按鈕 */
+        .pic {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            padding: 50px;
+        }
+
+        .pic img {
+            width: 100%;
+            background-color: gray;
+        }
+
+        .inf {
+            padding-left: 40px;
+            color: white;
+        }
+
+        .inf ul li {
+            font-size: 20px;
+        }
+
+        .name div {
+            font-size: 40px;
+            padding-top: 10vh;
+        }
+
+        .smallpic {
+            overflow: hidden;
+        }
+
+        .smallpic-container {
+            display: flex;
+            width: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .smallpic img {
+            width: 150px;
+            margin-right: 10px;
+            border: 1px solid transparent;
+            transition: border-color 0.5s ease;
+        }
+
+        .smallpic img:hover {
+
+            border: 1px solid gray;
+        }
+
+
+        @media screen and (max-width: 1200px) {
+            .name div {
+                padding-top: 3vh;
+            }
+        }
+
+        @media screen and (max-width: 992px) {
+            .name div {
+                padding-top: 2vh;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+
+            .inf {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .inf ul {
+                text-align: left;
+            }
+
+            .name div {
+                padding-top: 1vh;
+            }
+
+            .downul ul {
+                padding-right: 165px;
+            }
+        }
+
+        /* 分頁標籤 */
+        .container {
+            color: white;
+            text-align: center;
+        }
+
+        .container h6 {
+            padding: 5px;
+        }
+
+        .nav {
+            --bs-nav-link-color: gray;
+            --bs-nav-link-hover-color: white;
+        }
+
+        @media(max-width:768px) {
+            .x {
+                display: none;
+            }
+        }
+
+        /* 768px導覽列 */
+        .y h1 {
+            text-align: center;
+            color: white;
+        }
+
+        @media (min-width:768px) {
+            .y {
+                display: none;
+            }
+        }
+
+        /* 描述 */
+        .disc div {
+            color: white;
+            text-align: justify;
+            margin: 0px auto;
+            line-height: 50px;
+            max-width: 700px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .disc div {
+                max-width: 400px;
+            }
+        }
+
+        @media screen and (min-width: 768px) {
+            .disc div {
+                max-width: 700px;
+            }
+        }
+
+        .min12max20 {
+            --min-size: 12;
+            --max-size: 20;
+            --font-size: calc((var(--min-size) * 1px) + (var(--max-size) - var(--min-size)) * ((100cqw - 320px) / (1920 - 320)));
+            font-size: clamp(var(--min-size) * 1px, var(--font-size), var(--max-size) * 1px);
+        }
+
+        /* 手錶部位介紹  */
+        /* 機芯 */
+        .movement {
+            color: white;
+            text-align: justify;
+            line-height: 50px;
+            --min-size: 12;
+            --max-size: 20;
+            --font-size: calc((var(--min-size) * 1px) + (var(--max-size) - var(--min-size)) * ((100cqw - 320px) / (1920 - 320)));
+            font-size: clamp(var(--min-size) * 1px, var(--font-size), var(--max-size) * 1px);
+        }
+
+        @media screen and (max-width: 768px) {
+            #CALIBER {
+                text-align: center;
+            }
+
+            .movement {
+                max-width: 390px;
+                margin: auto;
+            }
+        }
+
+        /* PVD鍍層 */
+        .PVD {
+            color: white;
+            text-align: justify;
+            line-height: 50px;
+            --min-size: 12;
+            --max-size: 20;
+            --font-size: calc((var(--min-size) * 1px) + (var(--max-size) - var(--min-size)) * ((100cqw - 320px) / (1920 - 320)));
+            font-size: clamp(var(--min-size) * 1px, var(--font-size), var(--max-size) * 1px);
+        }
+
+        @media screen and (max-width: 768px) {
+            #PVDcoating {
+                text-align: center;
+            }
+
+            .PVD {
+                max-width: 390px;
+                margin: auto;
+            }
+        }
+
+
+        /* 錶鏡玻璃 */
+        .glass {
+            color: white;
+            text-align: justify;
+            line-height: 50px;
+            --min-size: 12;
+            --max-size: 20;
+            --font-size: calc((var(--min-size) * 1px) + (var(--max-size) - var(--min-size)) * ((100cqw - 320px) / (1920 - 320)));
+            font-size: clamp(var(--min-size) * 1px, var(--font-size), var(--max-size) * 1px);
+        }
+
+        @media screen and (max-width: 768px) {
+            #WatchGlass {
+                text-align: center;
+            }
+
+            .glass {
+                max-width: 390px;
+                margin: auto;
+            }
+        }
+
+        /* 皮革 */
+        .leather {
+            color: white;
+            text-align: justify;
+            line-height: 50px;
+            --min-size: 12;
+            --max-size: 20;
+            --font-size: calc((var(--min-size) * 1px) + (var(--max-size) - var(--min-size)) * ((100cqw - 320px) / (1920 - 320)));
+            font-size: clamp(var(--min-size) * 1px, var(--font-size), var(--max-size) * 1px);
+        }
+
+        @media screen and (max-width: 768px) {
+            #Leather {
+                text-align: center;
+            }
+
+            .leather {
+                max-width: 390px;
+                margin: auto;
+            }
+        }
+
+        /* 法規資訊 */
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        footer ul li {
+            padding: 5px;
+        }
+
+        li a:hover {
+            color: rgb(33, 33, 33);
+        }
+    </style>
+</head>
+
+<body style="background-color: rgb(33, 33, 33);">
+    <!-- 導覽連結 -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container-fluid d-flex justify-content-center">
+                <a style="margin-right: 4vw;" class="navbar-brand" href="../首頁.html" onmouseover="changeColor(this)"
+                    onmouseout="resetColor(this)">首頁</a>
+                <a style="margin-right: 4vw;" class="navbar-brand" href="../OMGEA/OMEGA系列.html" onmouseover="changeColor(this)"
+                    onmouseout="resetColor(this)">OMEGA</a>
+                <a style="margin-right: 4vw;" class="navbar-brand" href="../MIDO/MIDO系列.html" onmouseover="changeColor(this)"
+                    onmouseout="resetColor(this)">MIDO</a>
+                <a style="margin-right: 4vw;" class="navbar-brand" href="#" onmouseover="changeColor(this)"
+                    onmouseout="resetColor(this)">TUBOR</a>
+                <a style="margin-right: 4vw;" class="navbar-brand" href="#" onmouseover="changeColor(this)"
+                    onmouseout="resetColor(this)">搜尋</a>
+                <a style="margin-right: 4vw;" class="navbar-brand" href="../購物車/購物車.html" onmouseover="changeColor(this)"
+                    onmouseout="resetColor(this)">購物車</a>
+            </div>
+        </nav>
+    </header>
+    <!-- 手錶價格及購物車按鈕 -->
+    <section>
+        <div class="row" style="padding-top: 57px;">
+            <div class="col-md-6 col-sm-12">
+                <div class="pic">
+                    <img src="../手錶照片/MIDO/COMMANDER GRADIENT/M021.407.36.411.00_0_front_1_1.avif" alt="">
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="inf">
+                    <br><br>
+                    <div class="name">
+                        <div><b>COMMANDER GRADIENT</b></div>
+                    </div>
+                    <div>M021.407.36.411.00</div>
+                    <br>
+                    <ul>
+                        <li>漸層透視錶盤</li>
+                        <li>動力儲存高達80小時</li>
+                        <li>Superluminova® 夜光塗層</li>
+                    </ul>
+                    <div style="font-size: 30px;"><b>$34,100</b></div>
+                    <br><br>
+                    <div class="smallpic d-flex flex-row container">
+                        <div class="smallpic-container">
+                            <a
+                                href="./M_CG_7.html"><img
+                                    src="../手錶照片/MIDO/COMMANDER GRADIENT/M021.407.37.411.00_0_front_1_1.avif" alt=""></a>
+                            <a
+                                href="./M_CG_1.html"><img
+                                    src="../手錶照片/MIDO/COMMANDER GRADIENT/M021.407.11.411.00_0_front_1_1.avif" alt=""></a>
+                            <a
+                                href="./M_CG_2.html"><img
+                                    src="../手錶照片/MIDO/COMMANDER GRADIENT/M021.407.11.411.01_0_front_1_1.avif" alt=""></a>
+                            <a
+                                href="./M_CG_3.html"><img
+                                    src="../手錶照片/MIDO/COMMANDER GRADIENT/M021.407.18.411.00_0_front_1_1.avif" alt=""></a>
+                            <a
+                                href="./M_CG_4.html"><img
+                                    src="../手錶照片/MIDO/COMMANDER GRADIENT/M021.407.21.411.00_0_front_1.avif" alt=""></a>
+                            <a
+                                href="./M_CG_5.html"><img
+                                    src="../手錶照片/MIDO/COMMANDER GRADIENT/M021.407.33.411.00_0_front_1_1.avif" alt=""></a>
+                        </div>
+                    </div>
+                    <br><br>
+                    <div class="d-grid gap-2 col-8 ml-auto">
+                        <button class="btn" type="button"
+                            style="padding: 20px; font-size: 25px; background-color: gray;">加入購物車</button>
+                    </div>
+                    <br>
+                    <div class="downul">
+                        <ul>
+                            <li>瑞士製造</li>
+                            <li>全球保固</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <!-- 分頁標籤 -->
+        <section class="container x">
+            <h1>技術規格</h1>
+            <!-- 標籤分頁的導覽列 -->
+            <div class="nav nav-tabs nav-justified">
+                <!-- 按鈕1 -->
+                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#menu1" aria-selected="true">
+                    關於腕錶
+                </button>
+                <!-- 按鈕2 -->
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#menu2" aria-selected="false">
+                    錶殼與藍寶石玻璃
+                </button>
+                <!-- 按鈕3 -->
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#menu3" aria-selected="false">
+                    錶盤
+                </button>
+                <!-- 按鈕4 -->
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#menu4" aria-selected="false">
+                    機芯
+                </button>
+                <!-- 按鈕5 -->
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#menu5" aria-selected="false">
+                    錶帶
+                </button>
+            </div>
+            <br>
+            <!-- 標籤分頁的內容 -->
+            <div class="tab-content">
+                <!-- 第1個內容 -->
+                <div class="tab-pane fade show active" id="menu1">
+                    <div class="row">
+                        <div class="col-4">
+                            <h6>重量(公克)</h6>
+                            <h6>128</h6>
+                        </div>
+                        <div class="col-4">
+                            <h6>型號</h6>
+                            <h6>M021.407.11.411.01</h6>
+                        </div>
+                        <div class="col-4">
+                            <h6>系列</h6>
+                            <h6>Commander</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <h6>保養</h6>
+                            <h6>2年保固</h6>
+                        </div>
+                        <div class="col-4">
+                            <h6>防水性能</h6>
+                            <h6>5 bar（50 m / 165 ft）</h6>
+                        </div>
+                    </div>
+                </div>
+                <!-- 第2個內容 -->
+                <div class="tab-pane fade" id="menu2">
+                    <div class="row">
+                        <div class="col-4">
+                            <h6>錶殼形狀</h6>
+                            <h6>圓形</h6>
+                        </div>
+                        <div class="col-4">
+                            <h6>長度</h6>
+                            <h6>40.00</h6>
+                        </div>
+                        <div class="col-4">
+                            <h6>闊度</h6>
+                            <h6>40.00</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <h6>平均厚度</h6>
+                            <h6>10.8</h6>
+                        </div>
+                        <div class="col-4">
+                            <h6>錶耳</h6>
+                            <h6>21.00</h6>
+                        </div>
+                        <div class="col-4">
+                            <h6>錶殼物料</h6>
+                            <h6>精鋼</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <h6>水晶</h6>
+                            <h6>藍寶石水晶錶鏡</h6>
+                        </div>
+                        <div class="col-4">
+                            <h6>錶殼選項</h6>
+                            <h6>透視後底蓋</h6>
+                        </div>
+                    </div>
+                </div>
+                <!-- 第3個內容 -->
+                <div class="tab-pane fade" id="menu3">
+                    <div class="row">
+                        <div class="col-4">
+                            <h6>錶盤顏色</h6>
+                            <h6>藍色</h6>
+                        </div>
+                        <div class="col-4">
+                            <h6>刻度</h6>
+                            <h6>鑲貼時標</h6>
+                        </div>
+                    </div>
+                </div>
+                <!-- 第4個內容 -->
+                <div class="tab-pane fade" id="menu4">
+                    <div class="row">
+                        <div class="col-4">
+                            <h6>功能</h6>
+                            <h6>日期</h6>
+                        </div>
+                        <div class="col-4">
+                            <h6>動力儲存</h6>
+                            <h6>動力儲存高達80小時</h6>
+                        </div>
+                        <div class="col-4">
+                            <h6>機芯</h6>
+                            <h6>美度自動上鍊機芯 ETA</h6>
+                        </div>
+                    </div>
+                </div>
+                <!-- 第5個內容 -->
+                <div class="tab-pane fade" id="menu5">
+                    <div class="row">
+                        <div class="col-4">
+                            <h6>錶帶型號</h6>
+                            <h6>M605014391</h6>
+                        </div>
+                        <div class="col-4">
+                            <h6>錶帶詳情</h6>
+                            <h6>精鋼</h6>
+                        </div>
+                        <div class="col-4">
+                            <h6>錶帶顏色</h6>
+                            <h6>灰色</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <h6>錶扣</h6>
+                            <h6>折疊式錶扣</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- 畫面小於768px，出現導覽列 -->
+        <section class="y">
+            <h1>技術規格</h1>
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">關於腕錶</a>
+                    <!-- 按鈕觸發展開 -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#a"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <!-- 導覽列項目 -->
+                    <div class="collapse navbar-collapse" id="a">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <h6 class="nav-link">重量(公克)</h6>
+                                <h6 class="nav-link">128</h6>
+                            </li>
+                            <li class="nav-item">
+                                <h6 class="nav-link">型號</h6>
+                                <h6 class="nav-link">M021.407.11.411.01</h6>
+                            </li>
+                            <li class="nav-item">
+                                <h6 class="nav-link">系列</h6>
+                                <h6 class="nav-link">Commander</h6>
+                            </li>
+                            <li class="nav-item">
+                                <h6 class="nav-link">保養</h6>
+                                <h6 class="nav-link">2年保固</h6>
+                            </li>
+                            <li class="nav-item">
+                                <h6 class="nav-link">防水性能</h6>
+                                <h6 class="nav-link">5 bar（50 m / 165 ft）</h6>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container-fluid">
+                    <div class="navbar-brand" href="#">錶殼與藍寶石玻璃</div>
+                    <!-- 按鈕觸發展開 -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#b"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <!-- 導覽列項目 -->
+                    <div class="collapse navbar-collapse" id="b">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <h6 class="nav-link">錶殼形狀</h6>
+                                <h6 class="nav-link">圓形</h6>
+                            </li>
+                            <li class="nav-item">
+                                <h6 class="nav-link">長度</h6>
+                                <h6 class="nav-link">40.00</h6>
+                            </li>
+                            <li class="nav-item">
+                                <h6 class="nav-link">系列</h6>
+                                <h6 class="nav-link">Commander</h6>
+                            </li>
+                            <li class="nav-item">
+                                <h6 class="nav-link">闊度</h6>
+                                <h6 class="nav-link">40.00</h6>
+                            </li>
+                            <li class="nav-item">
+                                <h6 class="nav-link">平均厚度</h6>
+                                <h6 class="nav-link">10.8</h6>
+                            </li>
+                            <li class="nav-item">
+                                <h6 class="nav-link">錶耳</h6>
+                                <h6 class="nav-link">10.8</h6>
+                            </li>
+                            <li class="nav-item">
+                                <h6 class="nav-link">平均厚度</h6>
+                                <h6 class="nav-link">21.00</h6>
+                            </li>
+                            <li class="nav-item">
+                                <h6 class="nav-link">錶殼物料</h6>
+                                <h6 class="nav-link">精鋼</h6>
+                            </li>
+                            <li class="nav-item">
+                                <h6 class="nav-link">水晶</h6>
+                                <h6 class="nav-link">藍寶石水晶錶鏡</h6>
+                            </li>
+                            <li class="nav-item">
+                                <h6 class="nav-link">錶殼選項</h6>
+                                <h6 class="nav-link">透視後底蓋</h6>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">錶盤</a>
+                    <!-- 按鈕觸發展開 -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#c"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <!-- 導覽列項目 -->
+                    <div class="collapse navbar-collapse" id="c">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <h6 class="nav-link">錶盤顏色</h6>
+                                <h6 class="nav-link">藍色</h6>
+                            </li>
+                            <li class="nav-item">
+                                <h6 class="nav-link">刻度</h6>
+                                <h6 class="nav-link">鑲貼時標</h6>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">機芯</a>
+                    <!-- 按鈕觸發展開 -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#d"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <!-- 導覽列項目 -->
+                    <div class="collapse navbar-collapse" id="d">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <h6 class="nav-link">功能</h6>
+                                <h6 class="nav-link">日期</h6>
+                            </li>
+                            <li class="nav-item">
+                                <h6 class="nav-link">動力儲存</h6>
+                                <h6 class="nav-link">動力儲存高達80小時</h6>
+                            </li>
+                            <li class="nav-item">
+                                <h6 class="nav-link">機芯</h6>
+                                <h6 class="nav-link">美度自動上鍊機芯 ETA</h6>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">錶帶</a>
+                    <!-- 按鈕觸發展開 -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#e"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <!-- 導覽列項目 -->
+                    <div class="collapse navbar-collapse" id="e">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <h6 class="nav-link">錶帶型號</h6>
+                                <h6 class="nav-link">M605014391</h6>
+                            </li>
+                            <li class="nav-item">
+                                <h6 class="nav-link">錶帶詳情</h6>
+                                <h6 class="nav-link">精鋼</h6>
+                            </li>
+                            <li class="nav-item">
+                                <h6 class="nav-link">錶帶顏色</h6>
+                                <h6 class="nav-link">灰色</h6>
+                            </li>
+                            <li class="nav-item">
+                                <h6 class="nav-link">錶扣</h6>
+                                <h6 class="nav-link">折疊式錶扣</h6>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </section>
+        <br><br>
+        <!-- 描述 -->
+        <div class="row">
+            <div class="disc col-12" style="text-align: center;">
+                <h1 style="color: white;">描述</h1>
+                <br>
+                <div class="min12max20" style="color: white;">
+                    Commander Gradient
+                    瑞士腕錶採用透明壓克力材質，讓機械機芯的運轉變得清晰可見——這是該標誌性系列中的首創設計。 借助透明的錶背，可以在錶盤一側和背面欣賞 Calibre 80
+                    的零件運轉之美。 錶盤帶有原始的漸變煙燻效果至邊緣變得越來越深邃，而 3 點鐘位置的日期則完美突出。</div>
+            </div>
+        </div>
+    </section>
+    <!-- 手錶部位介紹 -->
+    <!-- 機芯 -->
+    <section class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 col-sm-12"><img style="width: 100%; padding: 20px 40px;"
+                    src="../手錶照片/MIDO/CALIBER 80機芯.avif" alt=""></div>
+            <div class="col-md-6 col-sm-12">
+                <h1 id="CALIBER" style="color: white;">CALIBER 80機芯</h1>
+                <div class="movement">
+                    美度表的Caliber 80是新一代的自動腕錶機芯，可提供長達80小時的動力儲存，是普通機芯動力儲存的兩倍。美度表同時也提供獲得COSC（瑞士官方天文台認證）、且精準度出類拔萃的天文台機芯版本。
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- PVD鍍層 -->
+    <section class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 col-sm-12 order-md-first order-last">
+                <h1 id="PVDcoating" style="color: white;">PVD鍍層</h1>
+                <div class="PVD">
+                    物理真空電鍍（PVD）是一道高技術的加工過程，能在腕錶組件表面鍍上一層堅固、無雜質的保護膜，以確保其長時間抗腐蝕的性能。全新腕錶設計不僅強化腕錶的堅實耐用度，更透過黑色、玫瑰金色或黃色的色澤襯托下，使腕錶更顯優雅美感。而它的低致敏特性深受各界喜愛，並被廣泛應用於各種領域。
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12"><img style="width: 100%; padding: 20px 40px;" src="../手錶照片/MIDO/PVD鍍層.avif"
+                    alt=""></div>
+        </div>
+    </section>
+    <!-- 錶鏡玻璃 -->
+    <section class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 col-sm-12"><img style="width: 100%; padding: 20px 40px;" src="../手錶照片/MIDo/錶鏡玻璃.avif"
+                    alt=""></div>
+            <div class="col-md-6 col-sm-12">
+                <h1 id="WatchGlass" style="color: white;">錶鏡玻璃</h1>
+                <div class="glass">
+                    美度表的錶鏡玻璃能襯托造工精美的錶盤，呈現驚人的立體縱深美感。它能在各種條件下確保時間的清晰易讀，同時更與腕錶的優雅設計相得益彰。堅固耐撞的特性讓錶鏡經久耐用，即使多年後仍能保持其清澈無瑕的透明度。
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 皮革 -->
+    <section class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 col-sm-12 order-md-first order-last">
+                <h1 id="Leather" style="color: white;">皮革</h1>
+                <div class="leather">
+                    美度表僅採用純正皮革製作其精美的天然皮革錶帶。手工精心製作和縫製而成的皮錶帶，除具備優異的耐用性之外，還讓佩戴更加舒適。美度表真皮錶帶的雋永風格通過高水準的做工完美呈現，盡顯優雅、時尚和運動風範。
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12"><img style="width: 100%; padding: 20px 40px;" src="../手錶照片/MIDo/皮革.avif"
+                    alt=""></div>
+        </div>
+    </section>
+    <!-- 法規等詳細資料連結 -->
+    <footer style="background-color: rgb(50, 50, 50);">
+        <div class="row">
+            <div class="col-lg-4 col-sm-12 text-center" style="margin-top: 40px; margin-bottom: 40px;">
+                <h4 style="color: rgb(150, 150, 150);"><b>品牌</b></h4>
+                <ul>
+                    <li><a href="../首頁.html">品牌導覽</a></li>
+                    <li><a href="../OMGEA/OMEGA系列.html">OMEGA</a></li>
+                    <li><a href="../MIDO/MIDO系列.html">MIDO</a></li>
+                    <li><a href="#">TUDOR</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-sm-12 text-center" style="margin-top: 40px;">
+                <h4 style="color: rgb(150, 150, 150);"><b>用戶服務</b></h4>
+                <ul>
+                    <li><a href="#">門市查詢</a></li>
+                    <li><a href="#">尋找維修</a></li>
+                    <li><a href="#">聯絡我們</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-sm-12 text-center" style="margin-top: 40px;">
+                <h4 style="color: rgb(150, 150, 150);"><b>條款相關</b></h4>
+                <ul>
+                    <li><a href="../隱私權政策.html">隱私權政策</a></li>
+                    <li><a href="../服務條款.html">使用條款</a></li>
+                    <li><a href="#">安心條款</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function changeColor(element) {
+            element.style.color = 'red';
+        }
+
+        function resetColor(element) {
+            element.style.color = '';
+        }
+
+        // 在window載入完成後執行初始化函數
+        window.onload = function () {
+            // 獲取.smallpic元素和其容器
+            var smallpicContainer = document.querySelector('.smallpic-container');
+            var smallpic = document.querySelector('.smallpic');
+
+            // 設置滑鼠點擊和放開事件的監聽器
+            smallpicContainer.addEventListener('mousedown', startDrag);
+            window.addEventListener('mouseup', stopDrag);
+
+            // 初始化變數
+            var isDragging = false;
+            var startX, endX, deltaX;
+
+            // 滑鼠點擊事件的處理函數
+            function startDrag(e) {
+                isDragging = true;
+                startX = e.clientX;
+
+                // 取消預設滑鼠事件，防止文字選擇等行為
+                e.preventDefault();
+
+                // 添加滑鼠移動事件的監聽器
+                window.addEventListener('mousemove', drag);
+            }
+
+            // 滑鼠移動事件的處理函數
+            function drag(e) {
+                if (isDragging) {
+                    endX = e.clientX;
+                    deltaX = endX - startX;
+
+                    // 移動.smallpic的容器
+                    smallpicContainer.style.transform = 'translateX(' + deltaX + 'px)';
+                }
+            }
+
+            // 滑鼠放開事件的處理函數
+            function stopDrag() {
+                if (isDragging) {
+                    isDragging = false;
+
+                    // 移除滑鼠移動事件的監聽器
+                    window.removeEventListener('mousemove', drag);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

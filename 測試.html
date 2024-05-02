@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>購物車</title>
+    <link rel="stylesheet" href="../_css/bootstrap.css">
+    <script src="../_js/bootstrap.bundle.js"></script>
+    <style>
+        /* 可以添加一些樣式 */
+    </style>
+</head>
+
+<body>
+    <h1>購物車</h1>
+
+    <!-- 商品列表 -->
+    <div class="product" data-name="商品1" data-price="20.00">
+        <h3>商品1</h3>
+        <p>商品描述...</p>
+        <button onclick="addToCart('商品1', 20.00)">加入購物車</button>
+    </div>
+
+    <div class="product" data-name="商品2" data-price="30.00">
+        <h3>商品2</h3>
+        <p>商品描述...</p>
+        <button onclick="addToCart('商品2', 30.00)">加入購物車</button>
+    </div>
+
+    <!-- 購物車內容 -->
+    <div id="cart">
+        <!-- 購物車內容將在這裡顯示 -->
+    </div>
+
+    <script>
+        // 函數：將商品添加到購物車
+        function addToCart(productName, productPrice) {
+            // 獲取購物車內容
+            let cart = getCart();
+
+            // 檢查購物車中是否已經有該商品，若有則更新數量，否則新增商品
+            let existingProduct = cart.find(item => item.name === productName);
+            if (existingProduct) {
+                existingProduct.quantity += 1;
+            } else {
+                cart.push({ name: productName, price: productPrice, quantity: 1 });
+            }
+
+            // 將購物車內容存入 Cookie
+            setCart(cart);
+
+            // 更新購物車的顯示
+            displayCart();
+        }
+
+        // 函數：從 Cookie 中獲取購物車內容
+        function getCart() {
+            let cartString = getCookie('cart');
+            return cartString ? JSON.parse(cartString) : [];
+        }
+
+        // 函數：將購物車內容存入 Cookie
+        function setCart(cart) {
+            setCookie('cart', JSON.stringify(cart));
+        }
+
+        // 函數：顯示購物車內容
+        function displayCart() {
+            let cartContainer = document.getElementById('cart');
+            cartContainer.innerHTML = '';
+
+            // 獲取購物車內容
+            let cart = getCart();
+
+            // 將購物車內容顯示在頁面上
+            cart.forEach(item => {
+                let productDiv = document.createElement('div');
+                productDiv.innerHTML = `<p>${item.name} - ${item.price} - 數量: ${item.quantity}</p>`;
+                cartContainer.appendChild(productDiv);
+            });
+        }
+
+        // 函數：從 Cookie 中獲取值
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+        // 函數：將值存入 Cookie
+        function setCookie(name, value, days = 7) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            const expires = `expires=${date.toUTCString()}`;
+            document.cookie = `${name}=${value}; ${expires}; path=/`;
+        }
+
+        // 頁面載入時顯示購物車內容
+        displayCart();
+    </script>
+</body>
+
+</html>

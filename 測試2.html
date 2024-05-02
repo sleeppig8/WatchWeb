@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手錶</title>
+    <link rel="stylesheet" href="../_css/bootstrap.css">
+    <script src="../_js/bootstrap.bundle.js"></script>
+    <style>
+        /* 影片容器 */
+        section {
+            position: relative;
+            /* 設置相對定位，以便內部元素使用絕對定位 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            /* 將超出容器的內容隱藏 */
+        }
+
+        /* 影片 */
+        video {
+            width: 1707px;
+        }
+
+        /* 文字 */
+        .title-text {
+            position: absolute;
+            bottom: 100px;
+            left: 50px;
+            color: #fff;
+            /* 設置文字顏色 */
+            --min-size: 20;
+            --max-size: 40;
+            --font-size: calc((var(--min-size) * 1px) + (var(--max-size) - var(--min-size)) * ((100cqw - 320px) / (1920 - 320)));
+            font-size: clamp(var(--min-size) * 1px, var(--font-size), var(--max-size) * 1px);
+            /* 設置文字大小 */
+        }
+
+
+        /* 探索按鈕 */
+        .explore-button {
+            position: absolute;
+            bottom: 50px;
+            /* 距離底部的距離 */
+            left: 50px;
+            /* 距離左側的距離 */
+            background-color: #007bff;
+            /* 設置按鈕背景色 */
+            color: #fff;
+            /* 設置文字顏色 */
+            padding: 7px 30px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <video src="./影片/MIDO.webm" loop autoplay muted></video>
+        <div class="title-text"><b>MULTIFORT SKELETON VERTIGO</b></div>
+        <button class="explore-button"><a href="">探索</a></button>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手錶</title>
+    <link rel="stylesheet" href="../_css/bootstrap.css">
+    <script src="../_js/bootstrap.bundle.js"></script>
+    <style>
+        /* 導覽列 */
+
+
+        /* 影片 */
+        #porn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        video {
+            padding-top: 56px;
+            width: 1920px;
+            /* height: 100%; */
+        }
+        /* 文字 */
+        .title-text {
+            position: absolute;
+            bottom: -10px;
+            left: 50px;
+            color: #fff;
+            /* 設置文字顏色 */
+            --min-size: 20;
+            --max-size: 40;
+            --font-size: calc((var(--min-size) * 1px) + (var(--max-size) - var(--min-size)) * ((100cqw - 320px) / (1920 - 320)));
+            font-size: clamp(var(--min-size) * 1px, var(--font-size), var(--max-size) * 1px);
+            /* 設置文字大小 */
+        }
+
+
+        /* 探索按鈕 */
+        .explore-button {
+            position: absolute;
+            bottom: -60px;
+            /* 距離底部的距離 */
+            left: 50px;
+            /* 距離左側的距離 */
+            background-color: gray;
+            /* 設置按鈕背景色 */
+            color: #fff;
+            /* 設置文字顏色 */
+            padding: 7px 30px;
+            border: 0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .explore-button a:hover{
+            color: rgb(17, 16, 16);
+        }
+
+        /* 手錶大圖 */
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            /* 添加溢出隐藏，防止放大时图像溢出 */
+        }
+
+        /* 放大時間0.3秒 */
+        .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        /* 放大 5% */
+        .image-container:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-container:hover a {
+            transform: scale(1.5);
+            transition: transform 0.3s ease;
+            color: gray;
+        }
+
+        /* 為了在文字懸停時保持放大效果 */
+        .image-container:hover img,
+        .image-container:hover a {
+            z-index: 1;
+        }
+
+        section span {
+            display: block;
+            text-align: center;
+        }
+
+        /* 法規資訊 */
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 5px;
+        }
+
+        li a:hover {
+            color: rgb(33, 33, 33);
+        }
+    </style>
+</head>
+
+<body style="background-color: rgb(33, 33, 33);">
+    <!-- 導覽連結 -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container-fluid d-flex justify-content-center">
+                <a style="margin-right: 4vw;" class="navbar-brand" href="#" onmouseover="changeColor(this)"
+                    onmouseout="resetColor(this)">首頁</a>
+                <a style="margin-right: 4vw;" class="navbar-brand" href="./OMGEA/OMEGA系列.html"
+                    onmouseover="changeColor(this)" onmouseout="resetColor(this)">OMEGA</a>
+                <a style="margin-right: 4vw;" class="navbar-brand" href="./MIDO/MIDO系列.html"
+                    onmouseover="changeColor(this)" onmouseout="resetColor(this)">MIDO</a>
+                <a style="margin-right: 4vw;" class="navbar-brand" href="#" onmouseover="changeColor(this)"
+                    onmouseout="resetColor(this)">TUDOR</a>
+                <a style="margin-right: 4vw;" class="navbar-brand" href="#" onmouseover="changeColor(this)"
+                    onmouseout="resetColor(this)">搜尋</a>
+                <a style="margin-right: 4vw;" class="navbar-brand" href="./購物車/購物車.html" onmouseover="changeColor(this)"
+                    onmouseout="resetColor(this)">購物車</a>
+            </div>
+        </nav>
+    </header>
+    <!-- 首頁形象影片 -->
+    <section id="porn">
+        <video src="./影片/MIDO.webm" loop autoplay muted></video>
+        <div class="title-text"><b>MULTIFORT SKELETON VERTIGO</b></div>
+        <button class="explore-button" type="button"><a href="./M_MULTIFORT_SKELETON_VERTIGO/M_MSV_1.html">探索</a></button>
+    </section>
+    <!-- 各品牌連結大圖超連結 -->
+    <section style="background-color: rgb(33, 33, 33);">
+        <br><br><br><br>
+        <div class="row">
+            <div class="col-lg-6 col-sm-12" style="margin-top: 20px;">
+                <div class="image-container">
+                    <img style="width: 490px; padding: 10px;" src="./手錶照片/OMEGA/超霸'57/超霸 speedmaster57.avif"
+                        alt="OMEGA圖">
+                    <a href="./OMGEA/OMEGA系列.html" style="font-size: larger;">
+                        <span>OMEGA</span>
+                        <span>查看更多系列</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12" style="margin-top: 20px;">
+                <div class="image-container">
+                    <img style="width: 490px;"
+                        src="./手錶照片/MIDO/MULTIFORT SKELETON VERTIGO/multiforat skeleton vertigo.avif" alt="MIDO圖">
+                    <a href="./MIDO/MIDO系列.html" style="font-size: larger;">
+                        <span>MIDO</span>
+                        <span>查看更多系列</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12" style="margin-top: 20px;">
+                <div class="image-container">
+                    <img style="width: 450px;" src="./手錶照片/TUDOR/tudor-m79000n-0002修改-removebg-preview.png"
+                        alt="TUDOR圖">
+                    <a href="#" style="font-size: larger;">
+                        <span>TUDOR</span>
+                        <span>查看更多系列</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <br><br><br><br>
+    </section>
+    <!-- 法規等詳細資料連結 -->
+    <footer style="background-color: rgb(50, 50, 50);">
+        <div class="row">
+            <div class="col-lg-4 col-sm-12 text-center" style="margin-top: 40px; margin-bottom: 40px;">
+                <h4 style="color: rgb(150, 150, 150);"><b>品牌</b></h4>
+                <ul>
+                    <li><a href="#">品牌導覽</a></li>
+                    <li><a href="./OMGEA/OMEGA系列.html">OMEGA</a></li>
+                    <li><a href="./MIDO/MIDO系列.html">MIDO</a></li>
+                    <li><a href="#">TUDOR</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-sm-12 text-center" style="margin-top: 40px;">
+                <h4 style="color: rgb(150, 150, 150);"><b>用戶服務</b></h4>
+                <ul>
+                    <li><a href="#">門市查詢</a></li>
+                    <li><a href="#">尋找維修</a></li>
+                    <li><a href="#">聯絡我們</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-sm-12 text-center" style="margin-top: 40px;">
+                <h4 style="color: rgb(150, 150, 150);"><b>條款相關</b></h4>
+                <ul>
+                    <li><a href="./隱私權政策.html">隱私權政策</a></li>
+                    <li><a href="./服務條款.html">使用條款</a></li>
+                    <li><a href="#">安心條款</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function changeColor(element) {
+            element.style.color = 'red';
+        }
+
+        function resetColor(element) {
+            element.style.color = '';
+        }
+    </script>
+</body>
+
+</html>

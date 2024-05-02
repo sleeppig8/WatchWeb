@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../_css/bootstrap.css">
+    <script src="../_js/bootstrap.bundle.js"></script>
+    <style>
+        /* 法規資訊 */
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 5px;
+        }
+
+        li a:hover {
+            color: rgb(33, 33, 33);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 導覽連結 -->
+    <header>
+        <img src="" alt="TUDOR LOGO">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container-fluid d-flex justify-content-center">
+                <a style="margin-right: 4vw;" class="navbar-brand" href="#" onmouseover="changeColor(this)" onmouseout="resetColor(this)">首頁</a>
+                <a style="margin-right: 4vw;" class="navbar-brand" href="#" onmouseover="changeColor(this)" onmouseout="resetColor(this)">OMEGA</a>
+                <a style="margin-right: 4vw;" class="navbar-brand" href="#" onmouseover="changeColor(this)" onmouseout="resetColor(this)">MIDO</a>
+                <a style="margin-right: 4vw;" class="navbar-brand" href="#" onmouseover="changeColor(this)" onmouseout="resetColor(this)">TUBOR</a>
+                <a style="margin-right: 4vw;" class="navbar-brand" href="#" onmouseover="changeColor(this)" onmouseout="resetColor(this)">搜尋</a>
+                <a style="margin-right: 4vw;" class="navbar-brand" href="#" onmouseover="changeColor(this)" onmouseout="resetColor(this)">購物車</a>
+            </div>
+        </nav>
+    </header>
+    <!-- 形象影片 -->
+    <section>
+        <video src=""></video>
+    </section>
+    <!-- 手錶系列圖 -->
+    <section>
+        <div class="row">
+            <div class="col">1</div>
+            <div class="col">2</div>
+            <div class="col">3</div>
+            <div class="col">4</div>
+            <div class="col">5</div>
+        </div>
+        <div class="row">
+            <div class="col">1</div>
+            <div class="col">2</div>
+            <div class="col">3</div>
+            <div class="col">4</div>
+            <div class="col">5</div>
+        </div>
+        <div class="row">
+            <div class="col">1</div>
+            <div class="col">2</div>
+            <div class="col">3</div>
+            <div class="col">4</div>
+            <div class="col">5</div>
+        </div>
+    </section>
+    <!-- 法規等詳細資料連結 -->
+    <footer style="background-color: rgb(50, 50, 50);">
+        <div class="row">
+            <div class="col-lg-4 col-sm-12 text-center" style="margin-top: 40px; margin-bottom: 40px;">
+                <h4 style="color: rgb(150, 150, 150);"><b>品牌</b></h4>
+                <ul>
+                    <li><a href="#">品牌導覽</a></li>
+                    <li><a href="#">OMEGA</a></li>
+                    <li><a href="#">MIDO</a></li>
+                    <li><a href="#">TUDOR</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-sm-12 text-center" style="margin-top: 40px;">
+                <h4 style="color: rgb(150, 150, 150);"><b>用戶服務</b></h4>
+                <ul>
+                    <li><a href="#">門市查詢</a></li>
+                    <li><a href="#">尋找維修</a></li>
+                    <li><a href="#">聯絡我們</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-sm-12 text-center" style="margin-top: 40px;">
+                <h4 style="color: rgb(150, 150, 150);"><b>條款相關</b></h4>
+                <ul>
+                    <li><a href="#">隱私權政策</a></li>
+                    <li><a href="#">使用條款</a></li>
+                    <li><a href="#">安心條款</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function changeColor(element) {
+            element.style.color = 'red';
+        }
+
+        function resetColor(element) {
+            element.style.color = '';
+        }
+    </script>
+</body>
+
+</html>
